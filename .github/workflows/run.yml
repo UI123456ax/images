@@ -1,0 +1,61 @@
+name: img2webp & Deploy
+
+# 在 Release 发布时 或 手动执行
+
+on:
+  release:
+     types:
+       - published
+
+  workflow_dispatch:
+
+jobs:
+  publish-npm:
+    runs-on: ubuntu-latest
+    # Clone 仓库
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: master
+      # 安装 Node.js    
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+          registry-url: https://registry.npmjs.org/
+        
+      # raw/ 作为原始图片存储，webp/ 作为压缩图片存储处，最后保存转换后的图片到 imgs/，可以自行修改为对应的文件夹位置
+      # 安装相关插件，转换图片
+      - name: Install & Convert
+        run: |
+          npm install -g webp-batch-convert@0.1.2
+          # 要注意这里的版本号需要添加，如果不添加默认使用@Latest会出现问题
+          cwebp-batch --in raw --out webp -q 75 -quiet
+          # npx webp-batch-convert --in raw --out webp -q 75 -quiet
+          mv webp/*.webp imgs/
+          
+      # 发布 NPM 包
+      # 自行修改为自己的Github邮箱地址和用户名
+      - name: Publish Package
+        run: |
+          git config --global user.email "$GIT_EMAIL"
+          git config --global user.name "$GIT_USER"
+          npm version patch
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          
+      # 删除 raw/ 和 webp/ 下的所有文件
+      - name: Delete Files
+        run: |
+          rm -rf webp/*
+          rm -rf raw/*
+          touch webp/.keep
+          touch raw/.keep
+          
+      - name: Push
+        run: |
+          git add -A
+          git commit -m "Publish"
+          git push origin master
