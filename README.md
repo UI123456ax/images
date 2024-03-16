@@ -62,6 +62,10 @@ npm init
 ```bash
 npm publish
 ```
+如果想删除已经上传了的包，可以在package.json所在目录使用以下命令
+```bash
+npm unpublish --force
+```
 
 ## Github Action 自动上传
 在本地的 [AssetsRepo] 文件夹下新建 `[AssetsRepo]/.github/workflows/autopublish.yml`
@@ -106,3 +110,5 @@ https://gcore.jsdelivr.net/gh/[GithubUserName]/[AssetsRepo]/img/index.png
 # jsDelivr+npm链接
 https://gcore.jsdelivr.net/npm/[NpmPackageName]/img/index.png
 ```
+
+> 上传的文件有200MB的限制
