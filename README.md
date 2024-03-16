@@ -1,21 +1,21 @@
 # Npm
 1. 登录 npm 官网，没有账号的注册一个，点击右上角的头像，进入 Access Token
-![](https://blog.xxfer.cn/posts/a008ab16)
+![](https://gcore.jsdelivr.net/npm/xxfer-pic@1.0.2/a008ab16/npm1.png)
 
 2. 点击 Generate New Token，选择 Classic Token。 
-![](https://blog.xxfer.cn/posts/a008ab16)
+![](https://gcore.jsdelivr.net/npm/xxfer-pic@1.0.2/a008ab16/npm2.png)
 
 3. 勾选 Automation，点击 Generate Token 生成令牌。
-![](https://blog.xxfer.cn/posts/a008ab16)
+![](https://gcore.jsdelivr.net/npm/xxfer-pic@1.0.2/a008ab16/npm3.png)
 > 然后将生成的 Token 令牌保存好，**只显示一次**
 
 # Github
 1. 进入仓库，选择 Settings，选择 Secrets 中的 Actions
-![](https://blog.xxfer.cn/posts/a008ab16)
+![](https://gcore.jsdelivr.net/npm/xxfer-pic@1.0.2/a008ab16/secret1.png)
 
 2. 点击 New repository secret 添加一个新的 Secret
 3. Name 填写 NPM_TOKEN，Secret 填写前面获取的 npm 令牌
-![](https://blog.xxfer.cn/posts/a008ab16)
+![](https://gcore.jsdelivr.net/npm/xxfer-pic@1.0.2/a008ab16/secret3.png)
 
 4. 在仓库根目录中新建一个 package.json 文件，内容如下：
 ```json
@@ -54,7 +54,7 @@ npm login
 ```bash
 npm init
 ```
-![](https://blog.xxfer.cn/posts/a008ab16)
+![](https://gcore.jsdelivr.net/npm/xxfer-pic@1.0.3/a008ab16/npminit.png)
 > 最后会输出一段 package.json，请求确认，输入 yes 即可。
 
 # 发布
@@ -97,3 +97,12 @@ npm version patch
 git push #这里可能会遇到报错，大家可以使用git pull origin main然后git push
 ```
 或者使用VScode自带的git上传
+
+# 使用
+jsdelivr+npm 的图片引用和 jsdelivr+github 很相似，例如我在 [AssetsRepo] 仓库里存放的 /img/index.png
+```bash
+# jsDelivr+github链接
+https://gcore.jsdelivr.net/gh/[GithubUserName]/[AssetsRepo]/img/index.png
+# jsDelivr+npm链接
+https://gcore.jsdelivr.net/npm/[NpmPackageName]/img/index.png
+```
