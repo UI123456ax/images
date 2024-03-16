@@ -1,6 +1,11 @@
 {
-  "name": "rainogo-filecdn",
-  "version": "0.0.0",
+  "name": "uniax",
+  "version": "1.0.0",
   "description": "Somewhere to save the file from @Rainogo",
-  "author": "Peter(@Rainogo)"
+  "author": "Peter (@Rainogo)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC"
 }
