@@ -15,7 +15,7 @@ def random_image():
         return jsonify({"error": "No images found"}), 404
     
     random_image = random.choice(image_list)
-    return redirect(f"https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/ACG-img/{random_image}")
+    return redirect(f"https://raw.githubusercontent.com/ui123456ax/picgo/main/ACG-img/{random_image}")
 
 if __name__ == '__main__':
     app.run(debug=True)
