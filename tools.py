@@ -1,5 +1,5 @@
 import os,re,shutil
-from PIL import Image
+# from PIL import Image
 from threading import Thread
 
 def file_backup(source, path_backup = './Backup/'):
@@ -108,4 +108,4 @@ def images_path(path, file_suffix, target_folder = "输出"):
 if __name__ == '__main__':
     path = './File/读取'
     suffix = 'jpg'
-    images_path(path=path, file_suffix=suffix)
+    Auto_Blog_images(path=path, backup=False)
